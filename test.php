@@ -1,13 +1,15 @@
 <html>
 <link href="css/style.css" rel="stylesheet" media="screen">
 </html>
-<?php
-
+<?php 
+include "lang.php";
+//$str_intro = array("et" => "Tere tulemast aasta 2016 e-valimiste kodulehele!", "en" => "Welcome");
 $servername = "localhost";
 $username = "votefycs_dbuser";
 $password = "";
 $dbname = "votefycs_db";
 $conn = new mysqli($servername, $username, $password, $dbname);
+$lang = "en";
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
@@ -54,7 +56,9 @@ echo "<br><br><br><br><br><br>";*/
 */
 function printIndex($conn)
 {
-	echo "<p id=\"para1\">Tere tulemast aasta 2016 e-valimiste kodulehele!</p>
+	global $str_intro;
+	//Tere tulemast aasta 2016 e-valimiste kodulehele!
+	echo "<p id=\"para1\">" . $str_intro['et'] . "</p>
 		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
 		  <p id='para2'>Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p>";
 }
