@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "votefycs_dbuser";
-$password = "dbpassword123";
+$password = "";
 $dbname = "votefycs_db";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
