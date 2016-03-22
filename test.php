@@ -1,4 +1,8 @@
+<html>
+<link href="css/style.css" rel="stylesheet" media="screen">
+</html>
 <?php
+
 $servername = "localhost";
 $username = "votefycs_dbuser";
 $password = "";
@@ -14,6 +18,9 @@ switch($_GET['fn'])
 		break;
 	case 'names':
 		printNames($conn);
+		break;
+	case 'index':
+		printIndex($conn);
 		break;
 	default:
 		echo "a";
@@ -40,6 +47,17 @@ while($row = $result->fetch_assoc())
 	echo "&nbsp&nbsp&nbsp&nbsp&nbsp" . $row['kasutajaNimi'] . "<br>";
 }
 echo "<br><br><br><br><br><br>";*/
+/*
+<p id="para1">Tere tulemast aasta 2016 e-valimiste kodulehele!</p>
+		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
+		  <p id="para2">Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p> 
+*/
+function printIndex($conn)
+{
+	echo "<p id=\"para1\">Tere tulemast aasta 2016 e-valimiste kodulehele!</p>
+		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
+		  <p id='para2'>Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p>";
+}
 function printNames($conn)
 {
 	$sql = "SELECT * FROM kandidaat ORDER BY Partei ASC;";

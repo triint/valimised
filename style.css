@@ -52,7 +52,8 @@ ul#menu li a:hover {
 	
 #content{
 	position: relative;
-	left: 20%;
+	left: 10%;
+	width: 50%;
 }	
 
 #menuleft{
@@ -61,7 +62,10 @@ ul#menu li a:hover {
 	float: left;
 	background-color: #FFFFFF;
 }
-
+ul#menuleft li
+{
+	list-style-type: none;
+}
 #framemain iframe{
     margin: 0px;
     padding: 0px;
