@@ -3,11 +3,11 @@
 </html>
 <?php 
 include "lang.php";
-//$str_intro = array("et" => "Tere tulemast aasta 2016 e-valimiste kodulehele!", "en" => "Welcome");
-$servername = "localhost";
-$username = "votefycs_dbuser";
-$password = "";
-$dbname = "votefycs_db";
+include "config.php";
+global $servername;
+global $username;
+global $password;
+global $dbname;
 $conn = new mysqli($servername, $username, $password, $dbname);
 $lang = "en";
 if ($conn->connect_error) {
