@@ -1,3 +1,15 @@
+<?php
+	$defaultlang = "en";
+	$cookie_lang = "lang";
+	if(!isset($_COOKIE[$cookie_lang]))
+	{
+		setcookie($cookie_lang,$defaultlang, time() + (3600*24),"/");
+	}
+	else
+	{
+		$lang = $_COOKIE[$cookie_lang];
+	}
+?>
 <html>
 <link href="css/style.css" rel="stylesheet" media="screen">
 </html>
@@ -9,7 +21,6 @@ global $username;
 global $password;
 global $dbname;
 $conn = new mysqli($servername, $username, $password, $dbname);
-$lang = "en";
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
@@ -27,38 +38,12 @@ switch($_GET['fn'])
 	default:
 		echo "a";
 }
-/*$result = $conn->query("SELECT * FROM kasutaja;");
-while($row = $result->fetch_assoc())
-{
-	echo $row["Isikukood"] . "  " . $row["Nimi"] . "  ";
-	$sql2 = "SELECT * FROM kandidaat WHERE Isikukood = " . $row["Valitud"] . ";";
-	$valitud = $conn->query($sql2);
-	$valitudrow = $valitud->fetch_assoc();
-	echo "Valitud: " . $valitudrow["Nimi"] . " Partei: " . $valitudrow["Partei"] .  "<br>";
-}
-echo "<br><br><br><br><br><br>";
-$result = $conn->query("SELECT a.Nimi AS kandidaatNimi, a.Partei, b.Nimi AS kasutajaNimi FROM kandidaat AS a JOIN kasutaja AS b ON a.Isikukood = b.Valitud ORDER BY Partei DESC;");
-$part="";
-while($row = $result->fetch_assoc())
-{
-	if($part!=$row['Partei'])
-	{
-		$part=$row['Partei'];
-		echo "<b>$part:</b><br>";
-	}
-	echo "&nbsp&nbsp&nbsp&nbsp&nbsp" . $row['kasutajaNimi'] . "<br>";
-}
-echo "<br><br><br><br><br><br>";*/
-/*
-<p id="para1">Tere tulemast aasta 2016 e-valimiste kodulehele!</p>
-		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
-		  <p id="para2">Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p> 
-*/
+
 function printIndex($conn)
 {
 	global $str_intro;
-	//Tere tulemast aasta 2016 e-valimiste kodulehele!
-	echo "<p id=\"para1\">" . $str_intro['et'] . "</p>
+	global $lang;
+	echo "<p id=\"para1\">" . $str_intro[$lang] . "</p>
 		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
 		  <p id='para2'>Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p>";
 }
