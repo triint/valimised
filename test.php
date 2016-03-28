@@ -1,6 +1,12 @@
 <?php
-	$defaultlang = "en";
+	$defaultlang = "ez";
 	$cookie_lang = "lang";
+	if($_GET[$cookie_lang])
+	{
+		setcookie($cookie_lang,$_GET[$cookie_lang], time() + (3600*24),"/");
+		header("Location: " . $_SERVER['HTTP_REFERER']);
+		die();
+	}
 	if(!isset($_COOKIE[$cookie_lang]))
 	{
 		setcookie($cookie_lang,$defaultlang, time() + (3600*24),"/");

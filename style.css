@@ -2,9 +2,16 @@
 	background-color: #EEEEEE;
 	width: auto;
 	margin: auto;
-	display: flex;
+	/*display: flex;*/
+	overflow: hidden;
 	}
-
+#lang {
+	/*background-color: #EEEEEE;*/
+	position: relative;
+	float: right;
+	top: 0%;
+	right: 5%;
+}
 h1 {
 	color: red;
 	text-align: center;
@@ -60,7 +67,7 @@ ul#menu li a:hover {
 	position: absolute;
 	left: 0px;
 	float: left;
-	background-color: #FFFFFF;
+	background-color: #EEEEEE;
 }
 ul#menuleft li
 {
