@@ -5,6 +5,10 @@
     <title>E-valimised 2016</title>
     <link href="css/style.css" rel="stylesheet" media="screen">
   </head>
+  <?php
+  include "lang.php";
+  //global $str_menu_mainpage;
+  $lang = $_COOKIE["lang"];?>
   <body>
   	  <div id="lang">
 			<a href="test.php?lang=en">en</a>
@@ -21,11 +25,11 @@
       	<li><a href="https://www.facebook.com">Facebook</a></li>
       </ul>
 	  <ul id="menuleft">
-		<li><a href="test.php?fn=index" target="testframe">Avaleht</a></li>
-		<li><a href="test.php?fn=count" target="testframe">Statistika</a></li>
-		<li><a href="test.php?fn=names" target="testframe">Kandidaadid</a></li>
+		<li><a href="test.php?fn=index" target="testframe"><?php echo $str_menu_mainpage[$lang]?></a></li>
+		<li><a href="test.php?fn=count" target="testframe"><?php echo $str_menu_statistics[$lang]?></a></li>
+		<li><a href="test.php?fn=names" target="testframe"><?php echo $str_menu_candidates[$lang]?></a></li>
 	  </ul>
-      <p id="para0"> Sisselogimine: </p>
+      <p id="para0"> <?php echo $str_menu_login[$lang]?>: </p>
       <div id="content">
 		  <!--<p id="para1">Tere tulemast aasta 2016 e-valimiste kodulehele!</p>
 		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
