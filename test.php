@@ -1,10 +1,11 @@
 <?php
-	$defaultlang = "ez";
+	$defaultlang = "et";
 	$cookie_lang = "lang";
 	if($_GET[$cookie_lang])
 	{
 		setcookie($cookie_lang,$_GET[$cookie_lang], time() + (3600*24),"/");
-		header("Location: " . $_SERVER['HTTP_REFERER']);
+		//header("Location: " . $_SERVER['HTTP_REFERER']);
+		header("Location: index.php");
 		die();
 	}
 	if(!isset($_COOKIE[$cookie_lang]))
@@ -49,9 +50,7 @@ function printIndex($conn)
 {
 	global $str_intro;
 	global $lang;
-	echo "<p id=\"para1\">" . $str_intro[$lang] . "</p>
-		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
-		  <p id='para2'>Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p>";
+	echo "<p id=\"para1\">" . $str_intro[$lang] . "</p>";
 }
 function printNames($conn)
 {

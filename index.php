@@ -7,7 +7,6 @@
   </head>
   <?php
   include "lang.php";
-  //global $str_menu_mainpage;
   $lang = $_COOKIE["lang"];?>
   <body>
   	  <div id="lang">
@@ -20,21 +19,17 @@
 		
       </div>
 
-      <ul id ="menu">
-      	<li><a href="https://www.swedbank.ee/private/">Swed</a></li>
-      	<li><a href="https://www.facebook.com">Facebook</a></li>
+      <ul id ="menu">	
       </ul>
 	  <ul id="menuleft">
-		<li><a href="test.php?fn=index" target="testframe"><?php echo $str_menu_mainpage[$lang]?></a></li>
-		<li><a href="test.php?fn=count" target="testframe"><?php echo $str_menu_statistics[$lang]?></a></li>
-		<li><a href="test.php?fn=names" target="testframe"><?php echo $str_menu_candidates[$lang]?></a></li>
+		<li><a href="test.php?fn=index" target="testframe"><?=$str_menu_mainpage[$lang]?></a></li>
+		<li><a href="test.php?fn=count" target="testframe"><?=$str_menu_statistics[$lang]?></a></li>
+		<li><a href="test.php?fn=names" target="testframe"><?=$str_menu_candidates[$lang]?></a></li>
 	  </ul>
-      <p id="para0"> <?php echo $str_menu_login[$lang]?>: </p>
+	  <p id="para0">
+		<a href="login.html" target="testframe"><?=$str_menu_login[$lang]?></a>
+		</p>
       <div id="content">
-		  <!--<p id="para1">Tere tulemast aasta 2016 e-valimiste kodulehele!</p>
-		  <p>Tegu on Eesti e-hääletamise simulatsiooniga, mille valmides on võimalik hääletust läbi viia ja vaadata ka reaalajas statistikat</p>
-		  <p id="para2">Testiks üks paragrahv, et näidata erinevaid cssi variante fondi jaoks</p> <-->
-		  
 		  <div id="framemain">
 			<iframe name="testframe" src="test.php?fn=index" width=600 height=500></iframe>
 		  </div>
