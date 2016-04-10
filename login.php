@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "lang.php";
 if (!empty($_POST))
 {
 	include "config.php";
@@ -33,9 +34,9 @@ if (!empty($_POST))
   <body>
   <div id="contentpw">
 	  <form name="log" method="POST" ACTION="login.php">
-		<input type="text" name="username" placeholder="Username"> <br><br>
-		<input type="password" name="password" placeholder="**********"> <br><br>
-		<input type="submit" value="submit"> <br>
+		<?=$str_username[$lang]?><input type="text" name="username" placeholder=""> <br><br>
+		<?=$str_password[$lang]?><input type="password" name="password" placeholder="**********"> <br><br>
+		<input type="submit" value="<?=$str_login[$lang]?>"> <br>
 	  </form>
   </div>
   </body>

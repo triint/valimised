@@ -38,10 +38,11 @@ function printIndex($conn)
 }
 function printNames($conn)
 {
+	include "lang.php";
 	$sql = "SELECT * FROM kandidaat ORDER BY Partei ASC;";
 	$result = $conn->query($sql);
 	echo "<table border='1'>";
-	echo "<tr><th>Nimi</th><th>Partei</th><th>Piirkond</th></tr>";
+	echo "<tr><th>" . $str_name[$lang] . "</th><th>" . $str_party[$lang] . "</th><th>" . $str_area[$lang]. "</th></tr>";
 	while($row = $result->fetch_assoc())
 	{
 		echo "<tr><td>" . $row['Nimi'] . "</td>" . "<td>" . $row['Partei'] . "</td>" . "<td>" . $row['Piirkond'] . "</td></tr>";
@@ -50,6 +51,7 @@ function printNames($conn)
 }
 function printCount($conn)
 {
+	include "lang.php";
 	$sql = "SELECT DISTINCT(Partei) as Partei FROM kandidaat ORDER BY Partei ASC";
 	$result = $conn->query($sql);
 	$parteiarray = array();
@@ -58,7 +60,7 @@ function printCount($conn)
 		array_push($parteiarray,$row['Partei']);
 	}
 	echo "<table border='1'>";
-	echo "<tr><th>Partei</th><th>Hääli</th></tr>";
+	echo "<tr><th>" . $str_party[$lang] . "</th><th>" . $str_votes[$lang] . "</th></tr>";
 	foreach($parteiarray as $val)
 	{
 		$sql = "SELECT COUNT(*) AS C FROM kandidaat JOIN kasutaja ON kandidaat.Isikukood = kasutaja.Valitud WHERE Partei = '" . $val . "';";

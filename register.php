@@ -1,4 +1,6 @@
 <?php
+include "lang.php";
+//$lang = $_COOKIE['lang'];
 if (!empty($_POST))
 {
 	include "config.php";
@@ -88,11 +90,11 @@ if (!empty($_POST))
   <body>
   <div id="contentpw">
 	  <form name="log" method="POST" ACTION="register.php">
-		<input type="text" name="username" placeholder="Username"> <br><br>
-		<input type="password" name="password" placeholder="**********"> <br><br>
-		<input type="text" name="nimi" placeholder="Nimi"> <br><br>
-		<input type="text" name="isikukood" placeholder="Isikukood" maxlength="11"> <br><br>
-		<input type="submit" value="submit"> <br>
+		<?=$str_username[$lang]?><input type="text" name="username" placeholder=""> <br><br>
+		<?=$str_password[$lang]?><input type="password" name="password" placeholder="**********"> <br><br>
+		<?=$str_name[$lang]?><input type="text" name="nimi" placeholder=""> <br><br>
+		<?=$str_code[$lang]?><input type="text" name="isikukood" placeholder="" maxlength="11"> <br><br>
+		<input type="submit" value="<?=$str_register[$lang]?>"> <br>
 	  </form>
   </div>
   </body>

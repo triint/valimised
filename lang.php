@@ -18,4 +18,14 @@ $str_menu_candidates = array("et" => "Kandidaadid", "en" => "Candidates");
 $str_menu_login = array("et" => "Sisselogimine", "en" => "Login");
 $str_menu_register = array("et" => "Registreerimine", "en" => "Register");
 $str_menu_logout = array("et" => "Logi välja", "en" => "Logout");
+$str_login_msg = array("et" => "Olete sisselogitud kui", "en" => "You are logged in as ");
+$str_name = array("et" => "Nimi", "en" => "Name");
+$str_party = array("et" => "Partei", "en" => "Party");
+$str_area = array("et" => "Piirkond", "en" => "Area");
+$str_votes = array("et" => "Hääli", "en" => "Votes");
+$str_username = array("et" => "Kasutajatunnus", "en" => "Username");
+$str_password = array("et" => "Parool", "en" => "Password");
+$str_login = array("et" => "Logi sisse", "en" => "Login");
+$str_register = array("et" => "Registreeri", "en" => "Register");
+$str_code = array("et" => "Isikukood", "en" => "Identification code");
 ?>
