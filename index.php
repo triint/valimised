@@ -44,7 +44,7 @@ include "lang.php";?>
 		<a href="login.php" target="testframe"><?=$str_menu_login[$lang]?></a>
 		<a href="register.php" target="testframe"><?=$str_menu_register[$lang]?></a>
 		<?php } else{?>
-		Tere tulemast <?=$_SESSION['user']['Nimi']?>
+		Olete sisselogitud kui <?=$_SESSION['user']['Nimi']?> <a href="logout.php"><?=$str_menu_logout[$lang]?></a>
 		<?}?>
 		</p>
       <div id="content">

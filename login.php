@@ -15,9 +15,6 @@ if (!empty($_POST))
 	{
 		unset($row['Password']);
 		$_SESSION['user'] = $row;
-		echo $_SESSION['user']['Nimi'];
-		echo "<br>";
-		echo $row['Nimi'];
 		//header("Location: test.php");
 		//die();
 	}

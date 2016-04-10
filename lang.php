@@ -17,5 +17,5 @@ $str_menu_statistics = array("et" => "Statistika", "en" => "Statistics");
 $str_menu_candidates = array("et" => "Kandidaadid", "en" => "Candidates");
 $str_menu_login = array("et" => "Sisselogimine", "en" => "Login");
 $str_menu_register = array("et" => "Registreerimine", "en" => "Register");
-
+$str_menu_logout = array("et" => "Logi välja", "en" => "Logout");
 ?>
