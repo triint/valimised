@@ -14,14 +14,6 @@ if($_GET[$cookie_lang])
 include "lang.php";
 include "config.php";
 $lang = $_COOKIE["lang"];
-global $servername;
-global $username;
-global $password;
-global $dbname;
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
 switch($_GET['fn'])
 {
 	case 'count':
@@ -34,7 +26,8 @@ switch($_GET['fn'])
 		printIndex($conn);
 		break;
 	default:
-		echo "a";
+		printIndex($conn);
+		break;
 }
 
 function printIndex($conn)

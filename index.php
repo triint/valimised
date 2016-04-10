@@ -1,4 +1,5 @@
 <?php
+session_start();
 $defaultlang = "et";
 $cookie_lang = "lang";
 $lang="";
@@ -37,8 +38,8 @@ include "lang.php";?>
 		<li><a href="test.php?fn=names" target="testframe"><?=$str_menu_candidates[$lang]?></a></li>
 	  </ul>
 	  <p id="para0">
-		<a href="login.html" target="testframe"><?=$str_menu_login[$lang]?></a>
-		<a href="register.html" target="testframe"><?=$str_menu_register[$lang]?></a>
+		<a href="login.php" target="testframe"><?=$str_menu_login[$lang]?></a>
+		<a href="register.php" target="testframe"><?=$str_menu_register[$lang]?></a>
 		</p>
       <div id="content">
 		  <div id="framemain">
