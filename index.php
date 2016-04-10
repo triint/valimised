@@ -1,13 +1,23 @@
-<!DOCTYPE html>
+<?php
+$defaultlang = "et";
+$cookie_lang = "lang";
+$lang="";
+if(!isset($_COOKIE[$cookie_lang]))
+{
+	setcookie($cookie_lang,$defaultlang, time() + (3600*24),"/");
+	$lang=$defaultlang;
+}
+else
+{
+	$lang=$_COOKIE[$cookie_lang];
+}
+include "lang.php";?>
 <html>
   <head>
     <meta charset="utf-8"/>
     <title>E-valimised 2016</title>
     <link href="css/style.css" rel="stylesheet" media="screen">
   </head>
-  <?php
-  include "lang.php";
-  $lang = $_COOKIE["lang"];?>
   <body>
   	  <div id="lang">
 			<a href="test.php?lang=en">en</a>
@@ -28,6 +38,7 @@
 	  </ul>
 	  <p id="para0">
 		<a href="login.html" target="testframe"><?=$str_menu_login[$lang]?></a>
+		<a href="register.html" target="testframe"><?=$str_menu_register[$lang]?></a>
 		</p>
       <div id="content">
 		  <div id="framemain">

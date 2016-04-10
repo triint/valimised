@@ -1,20 +1,10 @@
 <?php
-	$defaultlang = "et";
-	$cookie_lang = "lang";
-	if($_GET[$cookie_lang])
+$cookie_lang="lang";
+if($_GET[$cookie_lang])
 	{
 		setcookie($cookie_lang,$_GET[$cookie_lang], time() + (3600*24),"/");
-		//header("Location: " . $_SERVER['HTTP_REFERER']);
 		header("Location: index.php");
 		die();
-	}
-	if(!isset($_COOKIE[$cookie_lang]))
-	{
-		setcookie($cookie_lang,$defaultlang, time() + (3600*24),"/");
-	}
-	else
-	{
-		$lang = $_COOKIE[$cookie_lang];
 	}
 ?>
 <html>
@@ -23,6 +13,7 @@
 <?php 
 include "lang.php";
 include "config.php";
+$lang = $_COOKIE["lang"];
 global $servername;
 global $username;
 global $password;
