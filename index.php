@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 $defaultlang = "et";
 $cookie_lang = "lang";
 $lang="";
@@ -38,8 +40,12 @@ include "lang.php";?>
 		<li><a href="test.php?fn=names" target="testframe"><?=$str_menu_candidates[$lang]?></a></li>
 	  </ul>
 	  <p id="para0">
+		<?php if(empty($_SESSION['user'])){?>
 		<a href="login.php" target="testframe"><?=$str_menu_login[$lang]?></a>
 		<a href="register.php" target="testframe"><?=$str_menu_register[$lang]?></a>
+		<?php } else{?>
+		Tere tulemast <?=$_SESSION['user']['Nimi']?>
+		<?}?>
 		</p>
       <div id="content">
 		  <div id="framemain">

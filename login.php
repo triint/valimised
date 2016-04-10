@@ -1,18 +1,29 @@
 <?php
+session_start();
 if (!empty($_POST))
 {
 	include "config.php";
 	$user = $_POST['username'];
 	$pw = $_POST['password'];
-	$validuser = ctype_alnum($user);
-	$validpw = ctype_alnum($pw);
-	if($validuser and $validpw)
+	$user = preg_replace('/[^A-Za-z0-9\. -]/', '', $user);
+	$pw = preg_replace('/[^A-Za-z0-9\. -]/', '', $pw);
+	$sql = "SELECT * FROM kasutaja WHERE username = \"" . $user . "\";";
+	$result = $conn->query($sql);
+	$row = $result->fetch_assoc();
+	echo $_SESSION['user']['Nimi'];
+	if($row['Password'] == md5($pw))
 	{
-		//proceed
+		unset($row['Password']);
+		$_SESSION['user'] = $row;
+		echo $_SESSION['user']['Nimi'];
+		echo "<br>";
+		echo $row['Nimi'];
+		//header("Location: test.php");
+		//die();
 	}
 	else
 	{
-		echo "Invalid input";
+		echo "Invalid credentials<br>";
 	}
 }
 ?>
