@@ -15,8 +15,7 @@ if (!empty($_POST))
 	{
 		unset($row['Password']);
 		$_SESSION['user'] = $row;
-		//header("Location: test.php");
-		//die();
+		echo "<script>window.parent.location.href = window.parent.location.href;</script>";
 	}
 	else
 	{
