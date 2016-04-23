@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'votefy.cs.ut.ee';
+$config['base_url'] = 'http://votefy.cs.ut.ee';
 
 /*
 |--------------------------------------------------------------------------

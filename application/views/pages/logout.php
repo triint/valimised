@@ -1,6 +1,6 @@
 <?php
-session_start();
 unset($_SESSION['user']);
-header("Location: index.php");
+$baseurl = base_url();
+header("Location: " . $baseurl);
 die("Logout successful");
 ?>

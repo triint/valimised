@@ -28,4 +28,6 @@ $str_password = array("et" => "Parool", "en" => "Password");
 $str_login = array("et" => "Logi sisse", "en" => "Login");
 $str_register = array("et" => "Registreeri", "en" => "Register");
 $str_code = array("et" => "Isikukood", "en" => "Identification code");
+$str_vote = array("et" => "Hääleta", "en" => "Vote");
+$str_cancelvote = array("et" => "Tühista hääl", "en" => "Cancel vote");
 ?>
