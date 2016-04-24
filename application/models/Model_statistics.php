@@ -5,15 +5,16 @@ class Model_statistics extends CI_Model {
         {
                 parent::__construct();
         }
-	public function getCandidates()
+	public function getCandidates($name="",$party="",$area="")
 	{
-		$sql = "SELECT * FROM kandidaat ORDER BY Partei ASC;";
+		$name = preg_replace('/[^A-Za-z0-9\. -]/', '', $name);
+		$sql = "SELECT * FROM kandidaat WHERE nimi LIKE '%$name%' AND partei LIKE '%$party%' AND  piirkond LIKE '%$area%' ORDER BY Partei ASC;";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
 	public function getParties()
 	{
-		$parties = array("Keskerakond","Reformierakond","Isamaa ja Res Publica Liit","Eesti Konservatiivne Rahvaerakond","Sotsiaaldemokraatlik Erakond","Eesti Iseseisvuspartei", "Eestimaa Ühendatud Vasakpartei","Eestimaa Rohelised","Eesti Vabaduspartei – Põllumeeste Kogu","Eesti Vabaerakond","Rahva Ühtsuse Erakond");
+		$parties = array("Keskerakond","Reformierakond","Isamaa ja Res Publica Liit","Eesti Konservatiivne Rahvaerakond","Sotsiaaldemokraatlik Erakond","Eesti Iseseisvuspartei", "Eestimaa Ãœhendatud Vasakpartei","Eestimaa Rohelised","Eesti Vabaduspartei â€“ PÃµllumeeste Kogu","Eesti Vabaerakond","Rahva Ãœhtsuse Erakond");
 		return $parties;
 	}
 	public function getAreas()

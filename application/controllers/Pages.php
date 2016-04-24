@@ -42,15 +42,20 @@ class Pages extends CI_Controller
 				}
 				break;
 			case "candidates":
-			$this->load->view('templates/header', $data);
-		$this->load->view('templates/menu', $data);
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/menu', $data);
+				$this->load->model('Model_statistics');
+				$data['areas'] = $this->Model_statistics->getAreas();
+				$data['parties'] = $this->Model_statistics->getParties();
+				$data['query'] = $this->Model_statistics->getCandidates($this->input->get('name'),$this->input->get('party'),$this->input->get('area'));
+				//echo $this->input->get('txt');
 				if(isset($this->session->userdata['user']))
 				{
 					$this->load->helper('form');
 					$this->load->library('form_validation');
 					$this->form_validation->set_rules('candidate', 'Candidate', 'required');
-					$this->load->model('Model_statistics');
-					$data['query'] = $this->Model_statistics->getCandidates();
+					
+					
 					$data['iscandidate'] = $this->Model_statistics->isCandidate($this->session->userdata['user']->Isikukood);
 					if ($this->form_validation->run() === FALSE)
 					{
@@ -64,8 +69,7 @@ class Pages extends CI_Controller
 				}
 				else
 				{
-					$this->load->model('Model_statistics');
-					$data['query'] = $this->Model_statistics->getCandidates();
+					//$data['query'] = $this->Model_statistics->getCandidates();
 					$data['iscandidate']=-1;
 					$this->load->view('pages/'.$page, $data);
 				}
@@ -145,7 +149,15 @@ class Pages extends CI_Controller
 				$this->session->unset_userdata('user');
 				redirect(base_url());
 				break;
+			case "home":
+				$this->load->model('Model_statistics');
+				$data['iscandidate'] = $this->Model_statistics->isCandidate($this->session->userdata['user']->Isikukood);
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/menu', $data);
+				$this->load->view('pages/'.$page, $data);
+				break;
 			default:
+			
 			$this->load->view('templates/header', $data);
 		$this->load->view('templates/menu', $data);
 				$this->load->view('pages/'.$page, $data);
