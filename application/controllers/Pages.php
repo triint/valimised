@@ -6,6 +6,7 @@ class Pages extends CI_Controller
 	{
 		
 		$this->load->library('session');
+		$this->load->library('user_agent');
         if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
         {
 			show_404();
@@ -16,6 +17,29 @@ class Pages extends CI_Controller
 		$this->load->view('templates/menu', $data);
 		switch($page)
 		{
+			case "addcandidate":
+				if(!isset($this->session->userdata['user']))
+					redirect(base_url());
+				$this->load->model('Model_statistics');
+				if($this->Model_statistics->isCandidate($this->session->userdata['user']->Isikukood))
+					redirect(base_url()."index.php/candidates");
+				
+				$this->load->helper('form');
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('area', 'Area', 'required');
+				$this->form_validation->set_rules('party', 'Party', 'required');
+				$data['areas'] = $this->Model_statistics->getAreas();
+				$data['parties'] = $this->Model_statistics->getParties();
+				if ($this->form_validation->run() === FALSE)
+				{
+					$this->load->view('pages/addcandidate', $data);
+				}
+				else
+				{
+					$this->Model_statistics->addCandidate($this->session->userdata['user']->Isikukood);
+					redirect(base_url() . "index.php/candidates");
+				}
+				break;
 			case "candidates":
 				if(isset($this->session->userdata['user']))
 				{
@@ -24,6 +48,7 @@ class Pages extends CI_Controller
 					$this->form_validation->set_rules('candidate', 'Candidate', 'required');
 					$this->load->model('Model_statistics');
 					$data['query'] = $this->Model_statistics->getCandidates();
+					$data['iscandidate'] = $this->Model_statistics->isCandidate($this->session->userdata['user']->Isikukood);
 					if ($this->form_validation->run() === FALSE)
 					{
 						$this->load->view('pages/candidates', $data);
@@ -38,6 +63,7 @@ class Pages extends CI_Controller
 				{
 					$this->load->model('Model_statistics');
 					$data['query'] = $this->Model_statistics->getCandidates();
+					$data['iscandidate']=-1;
 					$this->load->view('pages/'.$page, $data);
 				}
 				break;

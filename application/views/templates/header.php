@@ -10,8 +10,8 @@
       	<h1>Votefy</h1>	
 		<?include "lang.php"?>
   	  <div id="lang">
-			<a href="test.php?lang=en">en</a>
-			<a href="test.php?lang=et">et</a>	
+			<a href="<?php echo base_url();?>index.php/lang?lang=en">en</a>
+			<a href="<?php echo base_url();?>index.php/lang?lang=et">et</a>	
 		</div>
       </div>
 	  
