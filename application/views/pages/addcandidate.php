@@ -19,7 +19,7 @@
 			<?php endforeach;?>
 		</select>
 		<br></p>
-		<p><input type="submit" name="submit" value="<?=$str_login[$lang]?>" /></p>
+		<p><input type="submit" name="submit" value="<?=$str_addcandidate[$lang]?>" /></p>
 	  </form>
   </div>
   

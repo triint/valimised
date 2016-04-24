@@ -13,11 +13,12 @@ class Pages extends CI_Controller
         }
 		include "lang.php";
 		$data['title'] = ucfirst($page); 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/menu', $data);
+		
 		switch($page)
 		{
 			case "addcandidate":
+				$this->load->view('templates/header', $data);
+		$this->load->view('templates/menu', $data);
 				if(!isset($this->session->userdata['user']))
 					redirect(base_url());
 				$this->load->model('Model_statistics');
@@ -41,6 +42,8 @@ class Pages extends CI_Controller
 				}
 				break;
 			case "candidates":
+			$this->load->view('templates/header', $data);
+		$this->load->view('templates/menu', $data);
 				if(isset($this->session->userdata['user']))
 				{
 					$this->load->helper('form');
@@ -68,11 +71,20 @@ class Pages extends CI_Controller
 				}
 				break;
 			case "statistics":
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/menu', $data);
 				$this->load->model('Model_statistics');
 				$data['query'] = $this->Model_statistics->getVotes();
 				$this->load->view('pages/'.$page, $data);
 				break;
+			case "statistics2":
+				$this->load->model('Model_statistics');
+				$data['query'] = $this->Model_statistics->getVotes();
+				$this->load->view('pages/statistics2', $data);
+				break;
 			case "login":
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/menu', $data);
 				$this->load->helper('form');
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('username', 'Username', 'required');
@@ -92,6 +104,8 @@ class Pages extends CI_Controller
 				}
 				break;
 			case "register":
+			$this->load->view('templates/header', $data);
+		$this->load->view('templates/menu', $data);
 				$this->load->helper('form');
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('username', $str_username[$lang], 'required');
@@ -132,6 +146,8 @@ class Pages extends CI_Controller
 				redirect(base_url());
 				break;
 			default:
+			$this->load->view('templates/header', $data);
+		$this->load->view('templates/menu', $data);
 				$this->load->view('pages/'.$page, $data);
 				break;
 		}

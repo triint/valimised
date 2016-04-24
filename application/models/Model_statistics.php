@@ -64,6 +64,7 @@ class Model_statistics extends CI_Model {
 		}
 		return $retarray;
 	}
+	
 	public function vote()
 	{
 		$id = $this->input->post('candidate');
