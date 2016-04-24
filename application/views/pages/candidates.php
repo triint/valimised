@@ -1,6 +1,7 @@
 <?php include "lang.php";?>
 <div id="content">
 <?php
+$userid=-1;
 if(isset($this->session->userdata['user']))
 {
 	echo validation_errors(); 
@@ -9,7 +10,7 @@ if(isset($this->session->userdata['user']))
 }
 ?>
   
-	<table border='1'>
+	<table>
 		<tr><th> <?=$str_name[$lang]?> </th><th> <?=$str_party[$lang]?> </th><th> <?=$str_area[$lang]?> </th></tr>
 		<?php foreach($query as $row)
 		{?>
@@ -34,5 +35,6 @@ if(isset($this->session->userdata['user']))
 		<?}?>
 		<?}?>
 	</table>
-	<input type="submit" name="submit" value="<?=$str_login[$lang]?>" />
-</form>
+	<?if($userid!=-1){?><input type="submit" name="submit" value="<?if($userid!=-0) echo $str_cancelvote[$lang]; else echo $str_vote[$lang];?>" /><?echo "</form>";}?>
+	
+	</div>

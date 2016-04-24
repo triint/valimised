@@ -1,6 +1,6 @@
 <?php include "lang.php";?>
 <div id="content">
-	<table border='1'>
+	<table>
 		<tr><th> <?=$str_party[$lang]?> </th><th> <?=$str_votes[$lang]?> </th></tr>
 		<?php foreach($query as $row)
 		{?>

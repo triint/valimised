@@ -10,6 +10,7 @@ class Pages extends CI_Controller
         {
 			show_404();
         }
+		include "lang.php";
 		$data['title'] = ucfirst($page); 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/menu', $data);
@@ -62,6 +63,42 @@ class Pages extends CI_Controller
 						redirect(base_url());
 					else
 						$this->load->view('pages/login', $data);
+				}
+				break;
+			case "register":
+				$this->load->helper('form');
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('username', $str_username[$lang], 'required');
+				$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|max_length[64]');
+				$this->form_validation->set_rules('password2', 'Password', 'required|matches[password]');
+				$this->form_validation->set_rules('name', 'Name', 'required');
+				$this->form_validation->set_rules('code', 'Code', 'required|min_length[11]|max_length[11]');
+				
+				if ($this->form_validation->run() === FALSE)
+				{
+					$this->load->view('pages/register', $data);
+				}
+				else
+				{
+					$this->load->model('Model_register');
+					$result = $this->Model_register->register();
+					if($result=="success")
+						redirect(base_url() . "index.php/login");
+					elseif($result=="exists")
+					{
+						$data['errormsg'] = "Username already taken";
+						$this->load->view('pages/register', $data);
+					}
+					elseif($result=="invalid")
+					{
+						$data['errormsg'] = "Invalid input";
+						$this->load->view('pages/register', $data);
+					}
+					else
+					{
+						$data['errormsg'] = "Error";
+						$this->load->view('pages/register', $data);
+					}
 				}
 				break;
 			case "logout":
