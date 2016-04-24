@@ -9,10 +9,8 @@ class Model_login extends CI_Model {
 	{
 		$user = $this->input->post('username');
 		$pw = $this->input->post('password');
-		$user = preg_replace('/[^A-Za-z0-9\. -]/', '', $user);
-		$pw = preg_replace('/[^A-Za-z0-9\. -]/', '', $pw);
-		$sql = "SELECT * FROM kasutaja WHERE username = \"" . $user . "\";";
-		$query = $this->db->query($sql);
+		$sql = "SELECT * FROM kasutaja WHERE username = ?;";
+		$query = $this->db->query($sql,array($user));
 		if($query->num_rows()!=1)
 			return false;
 		$result = $query->result();

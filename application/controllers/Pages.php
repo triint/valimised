@@ -47,7 +47,7 @@ class Pages extends CI_Controller
 				$this->load->model('Model_statistics');
 				$data['areas'] = $this->Model_statistics->getAreas();
 				$data['parties'] = $this->Model_statistics->getParties();
-				$data['query'] = $this->Model_statistics->getCandidates($this->input->get('name'),$this->input->get('party'),$this->input->get('area'));
+				$data['query'] = $this->Model_statistics->getCandidates($this->input->get('name',true),$this->input->get('party',true),$this->input->get('area',true));
 				//echo $this->input->get('txt');
 				if(isset($this->session->userdata['user']))
 				{
@@ -151,7 +151,10 @@ class Pages extends CI_Controller
 				break;
 			case "home":
 				$this->load->model('Model_statistics');
-				$data['iscandidate'] = $this->Model_statistics->isCandidate($this->session->userdata['user']->Isikukood);
+				if(isset($this->session->userdata['user']))
+					$data['iscandidate'] = $this->Model_statistics->isCandidate($this->session->userdata['user']->Isikukood);
+				else
+					$data['iscandidate']=-1;
 				$this->load->view('templates/header', $data);
 				$this->load->view('templates/menu', $data);
 				$this->load->view('pages/'.$page, $data);

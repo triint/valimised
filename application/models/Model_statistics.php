@@ -7,9 +7,9 @@ class Model_statistics extends CI_Model {
         }
 	public function getCandidates($name="",$party="",$area="")
 	{
-		$name = preg_replace('/[^A-Za-z0-9\. -]/', '', $name);
-		$sql = "SELECT * FROM kandidaat WHERE nimi LIKE '%$name%' AND partei LIKE '%$party%' AND  piirkond LIKE '%$area%' ORDER BY Partei ASC;";
-		$query = $this->db->query($sql);
+		echo $name;
+		$sql = "SELECT * FROM kandidaat WHERE nimi LIKE ? AND partei LIKE ? AND  piirkond LIKE ? ORDER BY Partei ASC;";
+		$query = $this->db->query($sql,array("%".$name."%","%".$party."%","%".$area."%"));
 		return $query->result();
 	}
 	public function getParties()
