@@ -7,7 +7,6 @@ class Model_statistics extends CI_Model {
         }
 	public function getCandidates($name="",$party="",$area="")
 	{
-		echo $name;
 		$sql = "SELECT * FROM kandidaat WHERE nimi LIKE ? AND partei LIKE ? AND  piirkond LIKE ? ORDER BY Partei ASC;";
 		$query = $this->db->query($sql,array("%".$name."%","%".$party."%","%".$area."%"));
 		return $query->result();
