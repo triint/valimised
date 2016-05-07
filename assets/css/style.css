@@ -59,9 +59,18 @@ ul#menu li a:hover {
 	
 #content{
 	position: relative;
-	left: 10%;
+	left: 12%;
 	width: 50%;
-
+}	
+#contentrefr{
+	position: relative;
+	left: 12%;
+	width: 50%;
+}	
+#chart_div{
+	position: relative;
+	left: 0%;
+	width: 60%;
 }	
 #contentpw{
 	position: relative;

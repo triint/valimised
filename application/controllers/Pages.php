@@ -84,6 +84,9 @@ class Pages extends CI_Controller
 			case "statistics2":
 				$this->load->model('Model_statistics');
 				$data['query'] = $this->Model_statistics->getVotes();
+				//$data['areavotes'] = $this->Model_statistics->getAreaVotes(array('Keskerakond','Eestimaa Rohelised'));
+				$data['areavotes'] = $this->Model_statistics->getAreaVotes($this->Model_statistics->getParties());
+				$data['areas'] = $this->Model_statistics->getAreas();
 				$this->load->view('pages/statistics2', $data);
 				break;
 			case "login":

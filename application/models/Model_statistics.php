@@ -64,7 +64,64 @@ class Model_statistics extends CI_Model {
 		}
 		return $retarray;
 	}
-	
+	public function getCandidateVotes($candidate)
+	{
+		$sql = "SELECT COUNT(*) AS C FROM kandidaat JOIN kasutaja ON ?= kasutaja.Valitud";
+		$query = $this->db->query($sql,array($candidate));
+		$count=$query->result();
+		return $count;
+	}
+	public function getAreaVotes($parties)
+	{
+		$partyarray = array();
+		foreach($parties as $party)
+		{
+			$sql = "SELECT ID from kandidaat WHERE Partei=?";
+			$query = $this->db->query($sql,array($party));
+			$result = $query->result();
+			
+			$areavotes = array();
+			foreach($result as $candidate)
+			{
+				$sql = "SELECT COUNT(*) AS C, kandidaat.Piirkond AS P FROM kandidaat,kasutaja WHERE kasutaja.Valitud  = ? AND kandidaat.ID = ?";
+				$query = $this->db->query($sql,array($candidate->ID,$candidate->ID));
+				$res = $query->result();
+				$area = $res[0]->P;
+				$count = $res[0]->C;
+				$go = true;
+				foreach($areavotes as $areas)
+				{
+					if($areas['Area']==$area)
+					{
+						$go=false;
+						break;
+					}
+				}
+				if($go)
+				{
+					array_push($areavotes,array('Area'=>$area,'Votes'=>$count));
+				}
+				else
+				{
+					$i=0;
+					foreach($areavotes as $temparea)
+					{
+						if($temparea['Area']==$area)
+						{
+							$areavotes[$i]['Votes']+=$count;
+						}
+						$i++;
+					}
+				}
+			$temparr = array();
+			foreach($areavotes as $temparea)
+			{
+				$temparr[$temparea['Area']] = $temparea['Votes'];
+			}
+			array_push($partyarray,array('Partei'=>$party, 'Data'=>$temparr));
+		}
+		return $partyarray;
+	}
 	public function vote()
 	{
 		$id = $this->input->post('candidate');
