@@ -64,12 +64,12 @@ ul#menu li a:hover {
 }	
 #contentrefr{
 	position: relative;
-	left: 12%;
+	/*left: 15%;*/
 	width: 50%;
 }	
 #chart_div{
 	position: relative;
-	left: 0%;
+	left: 10%;
 	width: 60%;
 }	
 #contentpw{

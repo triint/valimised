@@ -24,6 +24,23 @@ class Model_register extends CI_Model {
 		$query = $this->db->query($sql,array($code,$name,$user,$mdpw));
 		return "success";
 	}
+	/*public function callonce($areas, $parties)
+	{
+		$firstnames = array("Kristjan", "Martin", "Mart", "Toomas", "Kadi", "Kadri", "Anna", "Peeter", "Joonas", "Vello", "Kati", "Mari-Ann", "Artur", "Henri", "Henrik", "Villu", "Jaak", "Jaanus", "Ants", "Rein", "Kaur", "Kauri", "Kristofer", "Kiur", "Lauri", "Evert", "Joosep", "Mari", "Lidia", "Vello", "Kertu");
+		$lastnames = array("Tamm", "Pihlak", "Aed", "Taevas", "Goldberg", "Goldstein", "Schmit", "Saar", "Sepp", "Kask", "Kukk", "Rebane", "Ilves", "Koppel", "Petrov", "Pavlov", "Hansen", "Petersen", "Salo", "Weber", "Schulz", "Wagner", "Becker", "Hoffmann");
+		$code = 00000000001;
+		echo print_r($areas);
+		for($i=0;$i<150;$i++)
+		{
+			//119-218
+			$code = $code+1;
+			$name = $firstnames[rand(0,count($firstnames)-1)] .  $lastnames[rand(0,count($lastnames)-1)];
+			$party = $parties[rand(0,count($parties)-1)];
+			$pw = "null";
+			$sql = "INSERT INTO kasutaja (Isikukood, Valitud, Nimi, Username, Password) VALUES (?,?,?,?,?);";
+			$query = $this->db->query($sql,array($code,rand(119,218),$name,$name,$pw)); 
+		}
+	}*/
 }
 
 ?>

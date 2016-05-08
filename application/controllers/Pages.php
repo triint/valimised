@@ -79,6 +79,16 @@ class Pages extends CI_Controller
 				$this->load->view('templates/menu', $data);
 				$this->load->model('Model_statistics');
 				$data['query'] = $this->Model_statistics->getVotes();
+				$data['areas'] = $this->Model_statistics->getAreas();
+				$data['parties'] = $this->Model_statistics->getParties();
+				$data['refr'] = "statistics2";
+				if($this->input->get('type',true))
+				{
+					if($this->input->get('type')=='area')
+						$data['refr'] = 'statistics3';
+					elseif($this->input->get('type')=='candidate')
+						$data['refr'] = 'statistics4';
+				}
 				$this->load->view('pages/'.$page, $data);
 				break;
 			case "statistics2":
@@ -89,6 +99,24 @@ class Pages extends CI_Controller
 				$data['areas'] = $this->Model_statistics->getAreas();
 				$this->load->view('pages/statistics2', $data);
 				break;
+			case "statistics3":
+				$this->load->model('Model_statistics');
+				$data['query'] = $this->Model_statistics->getVotes();
+				$data['areavotes'] = $this->Model_statistics->getAreaVotes($this->Model_statistics->getParties());
+				$data['areas'] = $this->Model_statistics->getAreas();
+				$data['parties'] = $this->Model_statistics->getParties();
+				$this->load->view('pages/statistics3', $data);
+				break;
+			case "statistics4":
+				$this->load->model('Model_statistics');
+				/*$data['query'] = $this->Model_statistics->getVotes();
+				$data['areavotes'] = $this->Model_statistics->getAreaVotes($this->Model_statistics->getParties());
+				$data['areas'] = $this->Model_statistics->getAreas();
+				$data['parties'] = $this->Model_statistics->getParties();*/
+				$data['candvotes'] = $this->Model_statistics->getCandidatesVotes();
+				$this->load->view('pages/statistics4', $data);
+				break;
+				
 			case "login":
 				$this->load->view('templates/header', $data);
 				$this->load->view('templates/menu', $data);
@@ -111,8 +139,9 @@ class Pages extends CI_Controller
 				}
 				break;
 			case "register":
-			$this->load->view('templates/header', $data);
-		$this->load->view('templates/menu', $data);
+			$this->load->model('Model_statistics');
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/menu', $data);
 				$this->load->helper('form');
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('username', $str_username[$lang], 'required');
@@ -128,6 +157,7 @@ class Pages extends CI_Controller
 				else
 				{
 					$this->load->model('Model_register');
+					//$this->Model_register->callonce($this->Model_statistics->getAreas(),$this->Model_statistics->getParties());
 					$result = $this->Model_register->register();
 					if($result=="success")
 						redirect(base_url() . "index.php/login");

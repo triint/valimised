@@ -3,9 +3,9 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 	<div id="content">
-		<a href="<?php echo base_url();?>index.php/statistics3">Kogu riigis</a>&nbsp
-		<a href="<?php echo base_url();?>index.php/statistics4">Piirkonnati</a>&nbsp
-		<a href="<?php echo base_url();?>index.php/statistics5">Parteide lõikes </a><br>
+		<a href="<?php echo base_url();?>index.php/statistics?type=all">Kogu riigis</a>&nbsp
+		<a href="<?php echo base_url();?>index.php/statistics?type=area">Piirkonnati</a>&nbsp
+		<a href="<?php echo base_url();?>index.php/statistics?type=candidate">Kandidaatide lõikes </a><br>
 		<div id="contentrefr"></div>
 	</div>
 	<div id="chart_div"></div>
@@ -16,9 +16,9 @@ $(document).ready (function () {
 	$.ajaxSetup ({
         cache: false
     });
-	$('#contentrefr').load ('/index.php/statistics2', 'update=true');
+	$('#contentrefr').load ('/index.php/<?=$refr?>', 'update=true');
     var updater = setInterval (function () {
-        $('div#contentrefr').load ('/index.php/statistic2', 'update=true');
+        $('div#contentrefr').load ('/index.php/<?=$refr?>', 'update=true');
     }, 5000);
 });
 </script>
