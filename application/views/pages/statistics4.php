@@ -1,7 +1,7 @@
 <?php include "lang.php";?>
 <table>
 <tr>
-<th></th>
+<th><?=$str_candidate[$lang]?></th>
 <th><?=$str_votes[$lang]?> </th>
 </tr>
 <?php

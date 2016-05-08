@@ -88,6 +88,9 @@ class Pages extends CI_Controller
 						$data['refr'] = 'statistics3';
 					elseif($this->input->get('type')=='candidate')
 						$data['refr'] = 'statistics4';
+					elseif($this->input->get('type')=='party')
+						$data['refr'] = 'statistics5';
+							
 				}
 				$this->load->view('pages/'.$page, $data);
 				break;
@@ -115,6 +118,11 @@ class Pages extends CI_Controller
 				$data['parties'] = $this->Model_statistics->getParties();*/
 				$data['candvotes'] = $this->Model_statistics->getCandidatesVotes();
 				$this->load->view('pages/statistics4', $data);
+				break;
+			case "statistics5":
+				$this->load->model('Model_statistics');
+				$data['query'] = $this->Model_statistics->getCandidates();
+				$this->load->view('pages/statistics5', $data);
 				break;
 				
 			case "login":

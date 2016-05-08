@@ -27,8 +27,3 @@ foreach($areavotes as $votes)
 ?>
 </table>
 
-<?php //echo form_open('/statistics3'); ?>
-<?foreach($parties as $party):?>
-<input type="checkbox" name="party[]" value="<?=$party?>">
-<?endforeach;?>
-</form>

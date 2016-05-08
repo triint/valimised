@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $defaultlang = "et";
 $cookie_lang = "lang";
 $lang="";
@@ -15,6 +15,7 @@ $str_intro = array("et" => "Tere tulemast aasta 2016 e-valimiste kodulehele!", "
 $str_menu_mainpage = array("et" => "Avaleht", "en" => "Main page");
 $str_menu_statistics = array("et" => "Statistika", "en" => "Statistics");
 $str_menu_candidates = array("et" => "Kandidaadid", "en" => "Candidates");
+$str_candidate = array("et" => "Kandidaat", "en" => "Candidate");
 $str_menu_login = array("et" => "Sisselogimine", "en" => "Login");
 $str_menu_register = array("et" => "Registreerimine", "en" => "Register");
 $str_menu_logout = array("et" => "Logi välja", "en" => "Logout");

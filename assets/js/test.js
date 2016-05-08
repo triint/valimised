@@ -10,7 +10,7 @@
         data.addColumn('number', 'Votes');
 		//data.addRow(['test1',1]);
 		//data.addRow(['test2',2]);
-		for(var i=0;i<query.length;i++)
+		for(var i=0;i<query.length;i++)	
 		{
 			data.addRow([query[i]['Partei'],parseInt(query[i]['Votes'])]);
 		}
