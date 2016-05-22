@@ -7,8 +7,8 @@ class Model_statistics extends CI_Model {
         }
 	public function getCandidates($name="",$party="",$area="")
 	{
-		$sql = "SELECT * FROM kandidaat WHERE nimi LIKE ? AND partei LIKE ? AND  piirkond LIKE ? ORDER BY Partei ASC, Nimi ASC;";
-		$query = $this->db->query($sql,array("%".$name."%","%".$party."%","%".$area."%"));
+		$sql = "SELECT * FROM kandidaat WHERE LCASE(nimi) LIKE ? AND LCASE(partei) LIKE ? AND  LCASE(piirkond) LIKE ? ORDER BY Partei ASC, Nimi ASC;";
+		$query = $this->db->query($sql,array("%".strtolower($name)."%","%".strtolower($party)."%","%".strtolower($area)."%"));
 		$result = $query->result();
 		//echo print_r($result);
 		//array_push($result,array("Votes"=>$this->getCandidateVotes($result['ID'])));
